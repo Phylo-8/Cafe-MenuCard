@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roza's Cafe – Menu</title>
+<style>
+:root{--olive:#5f6b2c;--olive-d:#454e1e;--olive-l:#e9edd6;--bg:#fff;--card:#fff;--ink:#2a2e17;--mute:#6b7050;--line:#dde2c6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{color-scheme:light}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.5}
+header{background:var(--olive);color:#fff;text-align:center;padding:42px 20px 34px}
+header .tag{letter-spacing:.3em;font-size:.75rem;text-transform:uppercase;opacity:.85;font-family:system-ui,sans-serif}
+header h1{margin:8px 0 6px;font-size:clamp(2.2rem,8vw,3.6rem);font-weight:400;letter-spacing:.04em}
+header p{margin:0;opacity:.9;font-style:italic}
+.info{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-top:18px;font:.85rem system-ui,sans-serif}
+.info a{color:#fff}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:12px 16px;scrollbar-width:none}
+nav button{flex:none;border:1px solid var(--olive);background:transparent;color:var(--olive);padding:7px 16px;border-radius:99px;font:600 .85rem system-ui,sans-serif;cursor:pointer}
+nav button.on{background:var(--olive);color:#fff}
+nav button{color:var(--olive)}nav button.on{color:var(--bg)}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 40px}
+section{margin-bottom:34px}
+h2{font-weight:400;color:var(--olive);font-size:1.6rem;margin:0 0 4px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.sub{margin:0 0 14px;color:var(--mute);font-size:.9rem;font-style:italic}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;border-left:4px solid var(--olive)}
+.item h3{margin:0;font-size:1.05rem;display:flex;justify-content:space-between;gap:10px}
+.item p{margin:4px 0 0;color:var(--mute);font:.85rem system-ui,sans-serif}
+.pop{display:inline-block;background:var(--olive-l);color:var(--olive);font:700 .65rem system-ui,sans-serif;padding:2px 8px;border-radius:99px;margin-top:8px;letter-spacing:.05em}
+.price{color:var(--olive);white-space:nowrap}
+footer{background:var(--olive-l);text-align:center;padding:26px 16px;font:.85rem system-ui,sans-serif;color:var(--mute)}
+footer strong{color:var(--olive)}
+</style>
+</head>
+<body>
+<header>
+  <div class="tag">Café · Bakes · Bites</div>
+  <h1>Roza's Cafe</h1>
+  <p>Cafe, Pizza, Chinese, Continental &amp; Shakes</p>
+  <div class="info">
+    <span>📍 Vastu Elite, Near Kamalnayan Bajaj Hospital, Usmanpura, Aurangabad</span>
+    <span>🕖 Daily 11 AM – 11 PM</span>
+    <a href="tel:+918208750957">📞 +91 82087 50957</a>
+  </div>
+</header>
+<nav id="tabs"></nav>
+<main id="menu"></main>
+<footer>
+  <strong>Cost for two ≈ ₹450</strong> · Dine-in · Takeaway · Home delivery<br>
+  ★ = guest favourite. Prices in ₹, taken from online delivery listings; dine-in prices may differ. Items without a price: ask at the counter.
+</footer>
+<script>
+const MENU=[
+ {c:"Pizza",s:"Hand-topped & cheesy",i:[
+  {n:"Paneer Tikka Pizza",d:"Tandoori paneer, onion, capsicum, mozzarella",price:230,p:1},
+  {n:"Paneer Onion Pizza",d:"Paneer and onion on a cheesy base",price:210},
+  {n:"Chilli Cheese Pizza",d:"Loaded with cheese and a kick of chilli",price:210},
+  {n:"Margherita Pizza",d:"Classic tomato sauce and mozzarella",price:195},
+  {n:"Onion Capsicum Pizza",d:"Crunchy onion and capsicum, melted cheese",price:195}]},
+ {c:"Pasta",s:"Continental comfort",i:[
+  {n:"White Sauce Pasta",d:"Creamy béchamel, herbs, veggies",price:185,p:1}]},
+ {c:"Chinese",s:"Wok-tossed favourites",i:[
+  {n:"Paneer Schezwan Noodles",d:"Spicy schezwan noodles with paneer",price:220},
+  {n:"Paneer Noodles",d:"Stir-fried noodles with paneer cubes",price:210},
+  {n:"Hakka Noodles",d:"Stir-fried noodles with crunchy vegetables",price:160,p:1}]},
+ {c:"Sandwiches",s:"Quick bites",i:[
+  {n:"Paneer Tikka Sandwich",d:"Grilled with tandoori paneer",price:150},
+  {n:"Veg Cheese Grilled Sandwich",d:"Grilled with veggies and melted cheese",p:1}]},
+ {c:"Shakes & Beverages",s:"Cold, hot & in between",i:[
+  {n:"Cold Coffee",d:"Chilled coffee blended with ice cream"},
+  {n:"Chocolate Shake",d:"Thick and rich"},
+  {n:"Masala Chai",d:"Freshly brewed, perfect with breakfast"}]},
+ {c:"Bakes & Desserts",s:"Freshly baked",i:[
+  {n:"Biscoff Cake",d:"Caramelised biscuit cream, soft sponge",p:1},
+  {n:"Brownie",d:"Warm, fudgy chocolate"}]}
+];
+const tabs=document.getElementById('tabs'),root=document.getElementById('menu');
+const mk=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e};
+function tab(label,key){const b=mk('button','',label);b.onclick=()=>show(key);b.dataset.k=key;tabs.appendChild(b)}
+tab('All','all');MENU.forEach(m=>tab(m.c,m.c));
+function show(k){
+  [...tabs.children].forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+  root.replaceChildren();
+  MENU.filter(m=>k==='all'||m.c===k).forEach(m=>{
+    const s=mk('section'),h=mk('h2','',m.c);s.append(h,mk('p','sub',m.s));
+    const g=mk('div','grid');
+    m.i.forEach(it=>{
+      const a=mk('div','item'),t=mk('h3','',it.n);
+      if(it.price)t.append(mk('span','price','₹'+it.price));
+      a.append(t,mk('p','',it.d));
+      if(it.p)a.append(mk('span','pop','★ FAVOURITE'));
+      g.append(a)});
+    s.append(g);root.append(s)});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+show('all');
+</script>
+</body>
+</html>
